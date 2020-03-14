@@ -7,5 +7,5 @@
 
 void empilha_dijkstra(char *c, tPilha *D, tPilha *S);
 
-double *opera(double a, double b, char op);
-double calculadora(tPilha *D, tPilha *S);
+float *opera(float *a, float *b, char *op);
+float *calculadora(tPilha *D, tPilha *S);
