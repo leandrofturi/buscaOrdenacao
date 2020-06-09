@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Crivo.h"
+#include "crivo.h"
 
 void inicializa_int(int* I, int N) {
     for(int i = 2; i <= N; i++)
