@@ -92,9 +92,7 @@ void imprime_encadeada(tEncadeada *E, void (*print)(void*)) {
     printf("\n");
 }
 
-/*
-
-// TESTES
+/* TESTES
 
 void print_double(void *dado) {
     printf(" %lf", *(double*) dado);
