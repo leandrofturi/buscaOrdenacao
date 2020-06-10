@@ -25,36 +25,39 @@ void deleta_encadeada(tEncadeada *E) {
     }
 }
 
-void insere_encadeada(void *dado, tEncadeada *E) {
+tEncadeada* insere_encadeada(void *dado, tEncadeada *E) {
     if(dado == NULL || E == NULL)
-        return;
+        return(E);
 
     if(E->dado == NULL) {
         E->dado = dado;
         E->prox = NULL;
-        return;
     }
-
-    tEncadeada *p = E;
-    while(p->prox != NULL)
-        p = p->prox;
-    p->prox = cria_encadeada( );
-    p->prox->dado = dado;
-    p->prox->prox = NULL;
+    else {
+        tEncadeada *p = E;
+        while(p->prox != NULL)
+            p = p->prox;
+        p->prox = cria_encadeada( );
+        p->prox->dado = dado;
+        p->prox->prox = NULL;
+    }
+    return(E);
 }
 
-void remove_encadeada(void *dado, tEncadeada *E) {
+tEncadeada* remove_encadeada(void *dado, tEncadeada *E, int (*igual)(void*, void*)) {
     if(dado == NULL || E == NULL)
-        return;
+        return(E);
 
-    if(E->dado == dado) {
-        // Implementar
+    tEncadeada *p = E, *q = E->prox;
+    if(igual(p->dado, dado)) {
+        free(p);
+        return(q);
     }
-    for(tEncadeada *q = E, *p = E->prox; p != NULL; p = p->prox) {
-        if(p->dado == dado) {
-            q->prox = p->prox;
-            free(p);
-            return;
+    for(; q != NULL; q = q->prox) {
+        if(igual(q->dado, dado)) {
+            p->prox = q->prox;
+            free(q);
+            return(E);
         }
     }
 }
@@ -66,7 +69,6 @@ int contem_encadeada(void *dado, tEncadeada *E, int (*igual)(void*, void*)) {
     return(0);
 }
 
-// Propriedades
 int tamanho_encadeada(tEncadeada *E) {
     int n = 0;
     if(E->dado != NULL)
@@ -90,8 +92,16 @@ void imprime_encadeada(tEncadeada *E, void (*print)(void*)) {
     printf("\n");
 }
 
+/*
+
+// TESTES
+
 void print_double(void *dado) {
     printf(" %lf", *(double*) dado);
+}
+
+int igual_double(void *dado1, void *dado2) {
+    return(*(double*) dado1 == *(double*) dado2);
 }
 
 int main() {
@@ -100,13 +110,14 @@ int main() {
     E = cria_encadeada();
     printf("%d", tamanho_encadeada(E));
     double a = 5.5;
-    double b = 5.5;
-    insere_encadeada(&a, E);
-    insere_encadeada(&b, E);
-    remove_encadeada(&a, E);
+    double b = 4.5;
+    E = insere_encadeada(&a, E);
+    E = insere_encadeada(&b, E);
+    E = remove_encadeada(&a, E, igual_double);
     imprime_encadeada(E, print_double);
     printf("%d", tamanho_encadeada(E));
     deleta_encadeada(E);
 
     return(0);
 }
+*/

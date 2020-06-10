@@ -10,8 +10,8 @@ tEncadeada *cria_encadeada( );
 void deleta_encadeada(tEncadeada *E);
 
 // Inserção e remoção de elementos
-void insere_encadeada(void *dado, tEncadeada *E);
-void remove_encadeada(void *dado, tEncadeada *E);
+tEncadeada* insere_encadeada(void *dado, tEncadeada *E);
+tEncadeada* remove_encadeada(void *dado, tEncadeada *E, int (*igual)(void*, void*));
 int contem_encadeada(void *dado, tEncadeada *E, int (*igual)(void*, void*));
 
 // Propriedades
