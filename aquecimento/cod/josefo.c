@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "josefo.h"
+#include "../bib/josefo.h"
 
 
-void inicializa_int(int *I, int N) {
+int *inicializa_int(int N) {
+    int *I = (int*) malloc((N+1)*sizeof(int));
     for(int i = 0; i < N; i++)
         I[i] = 0;
+    return(I);
 }
 
 int eleicao_int(int *I, int N, int M) {
@@ -25,12 +27,13 @@ int eleicao_int(int *I, int N, int M) {
 }
 
 
-void inicializa_bit(char *B, int N) {
+char *inicializa_bit(int N) {
+    char *B = (char*) malloc((N/8+1)*sizeof(char));
     for(int i = 0; i <= N/8; i++)
         B[i] = 0b00000000;
-
     for(int i = N%8; i < 8; i++)
         B[N/8] |= 1 << i;
+    return(B);
 }
 
 int eleicao_bit(char *B, int N, int M) {
@@ -47,21 +50,4 @@ int eleicao_bit(char *B, int N, int M) {
         i = (i+1) % N;
     }
     return(i == 0 ? N : i);
-}
-
-
-int main(int argc, char *argv[]) {
-
-    int N = atoi(argv[1]);
-    int M = atoi(argv[2]);
-
-    int I[N];
-    inicializa_int(I, N);
-    printf("%d\n", eleicao_int(I, N, M));
-
-    char B[(N/8)+1];
-    inicializa_bit(B, N);
-    printf("%d\n", eleicao_bit(B, N, M));
-    
-    return(0);
 }

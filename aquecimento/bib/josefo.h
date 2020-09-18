@@ -1,8 +1,8 @@
-void inicializa_int(int *I, int N);
+int *inicializa_int(int N);
 
 int eleicao_int(int *I, int N, int M);
 
 
-void inicializa_bit(char *B, int N);
+char *inicializa_bit(int N);
 
 int eleicao_bit(char *B, int N, int M);
