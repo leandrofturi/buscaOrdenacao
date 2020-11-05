@@ -38,11 +38,10 @@ void print(Item *a, int N) {
     printf("\n");
 }
 
-
 int main(int argc, char *argv[]) {
     int N = atoi(argv[1]);
     Item *a  = read(N);
     analysis(a, N);
-    //print(a, N);
+    print(a, N);
     return(0);
 }

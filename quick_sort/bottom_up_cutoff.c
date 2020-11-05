@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include "item.h"
 #include "stack/stack.h"
 #define CUTOFF 30
@@ -44,6 +45,8 @@ void quick_sort(Item *a, int lo, int hi) {
         return;
 
     int N = hi-lo+1;
+    N = log(N);
+    N = N-(N/2);
     tStack *S = init_stack(N);
     if(S == NULL) return;
 

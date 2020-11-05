@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include "item.h"
 
-#define CUTOFF 5
+#define CUTOFF 50
 
 
 void merge(Item *a, Item *aux, int lo, int mid, int hi) {

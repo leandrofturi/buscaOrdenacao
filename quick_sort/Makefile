@@ -1,4 +1,4 @@
-FLAGS := -g -w
+FLAGS := -g -w -lm
 
 
 top_down:
@@ -51,16 +51,19 @@ Dijkstra_3way:
 	g++ -o main *.o $(FLAGS)
 	rm *.o
 
+teste_que_vai:
+	./main 100000 < input/nearly_sorted/100000.txt
+	./main 100000 < input/reverse_sorted/100000.txt
+	./main 100000 < input/sorted/100000.txt
+	./main 100000 < input/unif_rand/100000.txt
+	./main 1000000 < input/unif_rand/1000000.txt
+
 teste:
 	./main 100000 < input/nearly_sorted/100000.txt
 	./main 1000000 < input/nearly_sorted/1000000.txt
-	./main 10000000 < input/nearly_sorted/10000000.txt
 	./main 100000 < input/reverse_sorted/100000.txt
 	./main 1000000 < input/reverse_sorted/1000000.txt
-	./main 10000000 < input/reverse_sorted/10000000.txt
 	./main 100000 < input/sorted/100000.txt
 	./main 1000000 < input/sorted/1000000.txt
-	./main 10000000 < input/sorted/10000000.txt
 	./main 100000 < input/unif_rand/100000.txt
 	./main 1000000 < input/unif_rand/1000000.txt
-	./main 10000000 < input/unif_rand/10000000.txt
