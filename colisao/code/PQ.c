@@ -48,11 +48,9 @@ PQ* PQ_create(int max_N) {
 void PQ_destroy(PQ *pq) {
     // TODO: Implemente essa função que libera toda a memória da fila,
     //       destruindo inclusive os eventos que estavam na fila.
-
-    for(size_t i = 0; i <= pq->N; i++) {
-        if(pq->events[i] != NULL)
-            destroy_event(pq->events[i]);
-    }
+    
+    for(int i = 0; i <= pq->N; i++)
+        destroy_event(pq->events[i]);
     free(pq->events);
     free(pq);
 }

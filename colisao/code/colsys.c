@@ -115,7 +115,7 @@ void predict(Particle *p) {
     //   dentro do limite de tempo da simulação (variável global 'limit'), crie
     //   um evento e insira-o na fila.
     double time;
-    for(size_t i = 0; i < N; i++) {
+    for(int i = 0; i < N; i++) {
         time = t + time_to_hit(p, particles[i]);
         if(time <= limit)
             PQ_insert(pq, create_event(time, p, particles[i]));
@@ -202,7 +202,7 @@ void simulate() {
         //   função é a diferença de tempo entre o valor de 't' antigo e o tempo
         //   do evento.
         dt = get_time(e) - t;
-        for(size_t i = 0; i < N; i++)
+        for(int i = 0; i < N; i++)
             move_particle(particles[i], dt);
         t = get_time(e);
 
@@ -230,6 +230,8 @@ void simulate() {
         //   adequados.
         predict(a);
         predict(b);
+    
+        destroy_event(e);
     }
 
     printf("SIMULATION: Exiting main loop.\n");
